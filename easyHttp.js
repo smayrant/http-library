@@ -8,8 +8,12 @@ easyHTTP.prototype.get = function(url, callback) {
 
   let self = this;
   this.http.onload = function() {
+    //   if status is 'ok' pass the response as an argument in the callback
     if (self.http.status === 200) {
-      callback(self.http.responseText);
+      callback(null, self.http.responseText);
+      //   otherwise, return the status of the error
+    } else {
+      callback("Error: " + self.http.status);
     }
   };
 
