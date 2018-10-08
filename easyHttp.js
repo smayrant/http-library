@@ -21,7 +21,11 @@ easyHTTP.prototype.get = function(url, callback) {
 };
 
 // Make an HTTP POST Request
+easyHTTP.prototype.post = function(url, data, callback) {
+  this.http.open("POST", url, true);
 
+  this.send(JSON.stringify(data));
+};
 // Make an HTTP PUT Request
 
 // Make an HTTP DELETE Request
