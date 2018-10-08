@@ -49,3 +49,15 @@ easyHTTP.prototype.put = function (url, data, callback) {
 };
 
 // Make an HTTP DELETE Request
+easyHTTP.prototype.delete = function (url, callback) {
+    this.http.open("DELETE", url, true);
+    this.http.setRequestHeader('Content-type', 'application/json');
+
+    let self = this;
+    this.http.onload = function () {
+        callback(null, 'Post deleted');
+    };
+
+    //converts data to JSON string
+    this.http.send(JSON.stringify(data));
+};
